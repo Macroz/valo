@@ -1,4 +1,4 @@
-(defproject valo "0.1.0-SNAPSHOT"
+(defproject macroz/valo "0.1.0"
   :description "valo interactive lighting"
   :url "https://github.com/Macroz/valo"
   :license {:name "Eclipse Public License"
@@ -9,9 +9,4 @@
                  [com.evocomputing/colors "1.0.3"]
                  [stylefruits/gniazdo "0.4.1"]
                  [clj-tagsoup "0.3.0"]
-                 [overtone "0.10-SNAPSHOT"]
-                 [net.mikera/vectorz-clj "0.29.0"]
-                 ;;[net.mikera/imagez "0.5.0"]
-                 [hiccup "1.0.5"]
-                 ]
-  :jvm-opts ["-Xmx2048m"])
+                 ])
