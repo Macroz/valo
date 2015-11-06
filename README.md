@@ -6,7 +6,7 @@ _noun_
 
 1. the natural agent that stimulates sight and makes things visible.<br>
 _"the valo of the Sun"_<br>
-synonyms: light; loxone, hue
+synonyms: light; loxone, hue<br>
 antonyms: darkness, shadow, kaamos
 
 ## Usage
