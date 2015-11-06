@@ -4,7 +4,7 @@ valo
 _vʌlə/_<br>
 _noun_
 
-1. the natural agent that stimulates sight and makes things visible.
+1. the natural agent that stimulates sight and makes things visible.<br>
 _"the valo of the Sun"_<br>
 synonyms: light; loxone, hue
 antonyms: darkness, shadow, kaamos
