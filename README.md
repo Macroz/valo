@@ -1,6 +1,6 @@
 valo
 ======
-valo
+valo<br>
 _vʌlə/_<br>
 _noun_
 
