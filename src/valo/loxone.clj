@@ -30,7 +30,6 @@
   (color [this r g b])
   (set-controller [this id])
   (set-scene [this s]))
-  
 
 (defn make-loxone []
   (let [data (atom {:white [1.0 1.0 1.0]})]
@@ -46,12 +45,12 @@
         (loxone-wrapper @data "/dev/sps/restart"))
       (calibrate [this wr wg wb]
         (swap! data assoc :white [wr wg wb]))
-      
+
       valo/Discovery
       (get-lights [this]
         ;; incomplete implementation
         (parse-input (:value (second (loxone-wrapper @data "/dev/sps/enumin")))))
-   
+
       valo/Lights
       (set-light [this id r g b]
         (let [v (.color this r g b)]
@@ -70,18 +69,7 @@
 
       (set-controller [this id]
         (swap! data assoc :controller id))
-      
+
       (set-scene [this s]
         (loxone-wrapper @data (str "/dev/sps/io/" (@data :controller) "/" s)))
       )))
-
-
-
-
-
-
-
-
-
-
-
