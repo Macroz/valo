@@ -60,9 +60,18 @@
       valo/Lights
       (set-light [this id r g b]
         (let [v (.color this r g b)]
-          (hue-wrapper @data (str "/lights/" id "/state") {:on true :ct 300 :effect :none :bri 254})))
+          (hue-wrapper @data (str "/lights/" id "/state") {:bri 254})))
+      (set-light-hsl [this id h s l]
+        (let [hue (int (* (/ (mod h 360.0) 360.0) 65535.0))
+              sat (int (* s 0.01 255.0))
+              bri (int (+ (* l 2.53) 1.0))]
+          (println hue sat bri)
+          (hue-wrapper @data (str "/lights/" id "/state") {:bri bri :hue hue :sat sat})))
 
       HueSpecific
+      ;; (color-hsl [this h s l]
+      ;;   (let [[r g b] (map #(/ % 255.0) (take 3 (:rgba (c/create-color {:h h :s s :l l}))))]
+      ;;     (.color this r g b)))
       (color [this r g b]
         (let [[wr wg wb] (@data :white)
               r (* r wr)
