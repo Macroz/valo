@@ -60,7 +60,7 @@
       valo/Lights
       (set-light [this id r g b]
         (let [v (.color this r g b)]
-          (hue-wrapper @data (str "/lights/" id "/state") {:on true})))
+          (hue-wrapper @data (str "/lights/" id "/state") {:on true :ct 300 :effect :none :bri 254})))
 
       HueSpecific
       (color [this r g b]
