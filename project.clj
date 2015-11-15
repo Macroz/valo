@@ -9,4 +9,5 @@
                  [com.evocomputing/colors "1.0.3"]
                  [stylefruits/gniazdo "0.4.1"]
                  [clj-tagsoup "0.3.0" :exclusions [org.clojure/clojure]]
-                 ])
+                 ]
+  :repl-options {:init-ns valo.core})
