@@ -33,6 +33,9 @@
   (set-controller [this id])
   (set-scene [this s]))
 
+(defn- rgb->hsl [r g b]
+  (:hsl (c/create-color {:r (int (* r 255.0)) :g (int (* 255.0 g)) :b (int (* 255.0 b))})))
+
 (defn make-hue []
   (let [data (atom {:white [1.0 1.0 1.0]})]
     (reify
@@ -59,8 +62,8 @@
 
       valo/Lights
       (set-light [this id r g b]
-        (let [v (.color this r g b)]
-          (hue-wrapper @data (str "/lights/" id "/state") {:bri 254})))
+        (let [[h s l] (rgb->hsl r g b)]
+          (.set-light-hsl this id h s l)))
       (set-light-hsl [this id h s l]
         (let [hue (int (* (/ (mod h 360.0) 360.0) 65535.0))
               sat (int (* s 0.01 255.0))
@@ -92,3 +95,4 @@
 (.set-server hue "http://192.168.0.101")
 (.set-user hue "markkurontu" nil)
 ;;(.get-lights hue)
+;;(.set-light hue 6 1.0 0.0 0.0)
