@@ -7,7 +7,6 @@
 
 (defn- hue-request [username password server path & other-params]
   (let [url (str server "/api/" username path)
-        _ (println url)
         form-params (first other-params)
         params {;;:basic-auth [username password]
                 :content-type :application/json
@@ -68,7 +67,6 @@
         (let [hue (int (* (/ (mod h 360.0) 360.0) 65535.0))
               sat (int (* s 0.01 255.0))
               bri (int (+ (* l 2.53) 1.0))]
-          (println hue sat bri)
           (hue-wrapper @data (str "/lights/" id "/state") {:bri bri :hue hue :sat sat})))
 
       HueSpecific
