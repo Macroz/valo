@@ -31,6 +31,9 @@
   (set-controller [this id])
   (set-scene [this s]))
 
+(defn- hsl->rgb [h s l]
+  (map #(/ % 255.0) (take 3 (:rgba (c/create-color {:h h :s s :l l})))))
+
 (defn make-loxone []
   (let [data (atom {:white [1.0 1.0 1.0]})]
     (reify
@@ -52,6 +55,9 @@
         (parse-input (:value (second (loxone-wrapper @data "/dev/sps/enumin")))))
 
       valo/Lights
+      (set-light-hsl [this id h s l]
+        (let [[r g b] (hsl->rgb h s l)]
+          (.set-light this id r g b)))
       (set-light [this id r g b]
         (let [v (.color this r g b)]
           (loxone-wrapper @data (str "/dev/sps/io/" (@data :controller) "/" id "/" v))))
