@@ -64,9 +64,12 @@
         (let [[h s l] (rgb->hsl r g b)]
           (.set-light-hsl this id h s l)))
       (set-light-hsl [this id h s l]
-        (let [hue (int (* (/ (mod h 360.0) 360.0) 65535.0))
-              sat (int (* s 0.01 255.0))
-              bri (int (+ (* l 2.53) 1.0))]
+        (if (sequential? id)
+          (doseq [i id]
+            (.set-light-hsl this i h s l))
+          (let [hue (int (* (/ (mod h 360.0) 360.0) 65535.0))
+                sat (int (* s 0.01 255.0))
+                bri (int (+ (* l 2.53) 1.0))]
             (if (<= l 0)
               (hue-wrapper @data (str "/lights/" id "/state") {:on false})
               (hue-wrapper @data (str "/lights/" id "/state") {:on true :bri bri :hue hue :sat sat})))))
