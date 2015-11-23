@@ -67,7 +67,9 @@
         (let [hue (int (* (/ (mod h 360.0) 360.0) 65535.0))
               sat (int (* s 0.01 255.0))
               bri (int (+ (* l 2.53) 1.0))]
-          (hue-wrapper @data (str "/lights/" id "/state") {:bri bri :hue hue :sat sat})))
+            (if (<= l 0)
+              (hue-wrapper @data (str "/lights/" id "/state") {:on false})
+              (hue-wrapper @data (str "/lights/" id "/state") {:on true :bri bri :hue hue :sat sat})))))
 
       HueSpecific
       ;; (color-hsl [this h s l]
