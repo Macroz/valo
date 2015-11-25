@@ -1,7 +1,7 @@
 valo
 ======
 valo<br>
-_vʌlə/_<br>
+_/vʌlə/_<br>
 _noun_
 
 1. the natural agent that stimulates sight and makes things visible.<br>
