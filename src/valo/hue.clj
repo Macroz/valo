@@ -93,9 +93,3 @@
 
       (set-scene [this s])
       )))
-
-(def hue (make-hue))
-(.set-server hue "http://192.168.0.101")
-(.set-user hue "markkurontu" nil)
-;;(.get-lights hue)
-;;(.set-light hue 6 1.0 0.0 0.0)
