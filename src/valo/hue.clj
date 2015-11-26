@@ -60,7 +60,7 @@
         (hue-wrapper @data "/lights"))
 
       valo/Lights
-      (set-light [this id r g b]
+      (set-light-rg [this id r g b]
         (let [[h s l] (rgb->hsl r g b)]
           (.set-light-hsl this id h s l)))
       (set-light-hsl [this id h s l]

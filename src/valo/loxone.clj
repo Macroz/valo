@@ -57,8 +57,8 @@
       valo/Lights
       (set-light-hsl [this id h s l]
         (let [[r g b] (hsl->rgb h s l)]
-          (.set-light this id r g b)))
-      (set-light [this id r g b]
+          (.set-light-rgb this id r g b)))
+      (set-light-rgb [this id r g b]
         (let [v (.color this r g b)]
           (loxone-wrapper @data (str "/dev/sps/io/" (@data :controller) "/" id "/" v))))
 

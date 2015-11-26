@@ -14,4 +14,4 @@
 
 (defprotocol Lights
   (set-light-hsl [this id h s l])
-  (set-light [this id r g b]))
+  (set-light-rgb [this id r g b]))
